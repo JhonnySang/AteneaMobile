@@ -1,0 +1,14 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<Application xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:infrastructure="clr-namespace:AteneaMobile.Infrastructure;assembly=AteneaMobile"
+             x:Class="AteneaMobile.App">
+    <Application.Resources>
+        <ResourceDictionary>
+            <!--Global Styles-->
+            <infrastructure:InstanceLocator x:Key="Locator"></infrastructure:InstanceLocator>
+            <!-- Colors -->
+
+        </ResourceDictionary>
+    </Application.Resources>
+</Application>

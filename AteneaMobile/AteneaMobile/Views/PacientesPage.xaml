@@ -1,0 +1,65 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="AteneaMobile.Views.PacientesPage"
+             BindingContext="{Binding Main, Source={StaticResource Locator}}"
+             Title="Pacientes">
+    <ContentPage.Content>
+        <StackLayout
+            BindingContext="{Binding Pacientes}"
+            >
+            <SearchBar Placeholder="Buscar..."
+                       Text="{Binding Filter,Mode=TwoWay}"
+                       SearchCommand="{Binding SearchCommand}"></SearchBar>
+            <!--SearchCommand es el q dispara el buscador-->
+            <ListView 
+                HasUnevenRows="true" IsPullToRefreshEnabled="true"
+                IsRefreshing="{Binding IsRefreshing, Mode=TwoWay}"
+                ItemsSource="{Binding Pacientes}"
+                SeparatorVisibility="None"
+                RefreshCommand="{Binding RefreshCommand}"> <!-- HasUneevenRows para Permitir tener filas de mayor tamaño
+                                                                IsPullToRefreshEnabled para deslizar el dedo hacia abajo en la lista y actualice
+                                                                IsRefreshing colocar en true cuando la lista este cargando y  en falso cuando ya este cargada-->
+                <ListView.ItemTemplate>
+                    <DataTemplate>
+                        <ViewCell>
+                            <Frame
+                                CornerRadius="20"
+                                HasShadow="true"
+                                Margin="5">
+                                <Frame.GestureRecognizers>
+                                    <TapGestureRecognizer Command="{Binding SelectPacienteCommand}"/>
+                                </Frame.GestureRecognizers>
+                                <Grid>
+                                    <Grid.ColumnDefinitions>
+                                        <ColumnDefinition Width="*"/>
+                                        <ColumnDefinition Width="Auto"/>
+                                    </Grid.ColumnDefinitions>
+                                    <StackLayout 
+                                        Grid.Column="0"
+                                        VerticalOptions="Center">
+                                        <Label 
+                                            FontAttributes="Bold"
+                                            FontSize="Medium" 
+                                            Text="{Binding apyNom}"
+                                            TextColor="Black">
+                                        </Label>
+                                        <Label 
+                                            Text="{Binding perDni}"
+                                            TextColor="Black">
+                                        </Label>
+                                    </StackLayout>
+                                    <Image 
+                                        Grid.Column="1"
+                                        HorizontalOptions="End" 
+                                        Source="ic_chevron_right">
+                                    </Image>
+                                </Grid>
+                            </Frame>
+                        </ViewCell>
+                    </DataTemplate>
+                </ListView.ItemTemplate>
+            </ListView>
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>

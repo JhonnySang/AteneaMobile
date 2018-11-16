@@ -1,0 +1,21 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<MasterDetailPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:views1="clr-namespace:AteneaMobile.Views;assembly=AteneaMobile"
+             x:Class="AteneaMobile.Views.MainPage"
+                  BindingContext="{Binding Main, Source={StaticResource Locator}}">
+
+    <MasterDetailPage.Master>
+        <views1:MenuPage />
+    </MasterDetailPage.Master>
+
+    <MasterDetailPage.Detail>
+        <NavigationPage>
+            <x:Arguments>
+                <views1:PacientesPage />
+            </x:Arguments>
+        </NavigationPage>
+    </MasterDetailPage.Detail>
+
+</MasterDetailPage>
+

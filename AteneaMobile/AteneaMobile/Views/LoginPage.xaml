@@ -1,0 +1,94 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="AteneaMobile.Views.LoginPage"
+             BindingContext="{Binding Main , Source={StaticResource Locator}}"
+             Title="Login">
+    <ContentPage.Content>
+        <ScrollView BindingContext="{Binding Login}">
+            <StackLayout Margin="30">
+                <Image Source="ateneo.jpg" 
+                       Margin="30"
+                       Aspect="Fill"
+                       HeightRequest="100"
+                       WidthRequest="300"
+                       HorizontalOptions="Center"
+                ></Image>
+                <Grid
+                    VerticalOptions="Start">
+                    <Grid.RowDefinitions>
+                        <RowDefinition />
+                        <RowDefinition />
+                    </Grid.RowDefinitions>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="*"></ColumnDefinition>
+                        <ColumnDefinition Width="2*"></ColumnDefinition>
+                    </Grid.ColumnDefinitions>
+                    <Label Grid.Row="0"
+                           Grid.Column="0"
+                           VerticalOptions="Center"
+                           HorizontalOptions="Start"
+                           FontSize="20"
+                           TextColor="Black"
+                           Text="Usuario"></Label>
+                    <Entry Grid.Row="0"
+                           Grid.Column="1"
+                        Text="{Binding Usuario, Mode=TwoWay}"
+                        Placeholder="Ingrese su Usuario..."></Entry>
+
+                    <Label Grid.Row="1"
+                           Grid.Column="0"
+                           VerticalOptions="Center"
+                           HorizontalOptions="Start"
+                           FontSize="19"
+                           TextColor="Black"
+                           Text="Contraseña"></Label>
+                    <Entry 
+                        Grid.Row="1"
+                        Grid.Column="1"
+                        Text="{Binding Password,Mode=TwoWay}"
+                        Placeholder="Ingrese su Contraseña..."
+                        IsPassword="True"
+                    ></Entry>
+                </Grid>
+                <ActivityIndicator
+                    VerticalOptions="Center"
+                    IsRunning="{Binding IsRunning, Mode=TwoWay}"></ActivityIndicator>
+                <StackLayout>
+                    <Grid
+                        VerticalOptions="Start">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="*"></ColumnDefinition>
+                        </Grid.ColumnDefinitions>
+                        <Label Grid.Row="0"
+                               Grid.Column="0"
+                               HorizontalOptions="Center"
+                               VerticalOptions="Center"
+                               Text="Recordar Contraseña" ></Label>
+                        <Switch 
+                            Grid.Row="0"
+                            Grid.Column="0"
+                        HorizontalOptions="End"
+                        IsToggled="{Binding RecordarPassword,Mode=TwoWay}"></Switch>
+                    </Grid>
+                </StackLayout>
+                
+                <Button Text="Entrar" 
+                        TextColor="Yellow" 
+                        FontSize="Large"
+                        Font="Large"
+                        FontAttributes="Bold"
+                        BackgroundColor="Navy"
+                        BorderColor="White"
+                        HorizontalOptions="Center"
+                        Margin="30"
+                        BorderRadius="25"
+                        HeightRequest="46"
+                        WidthRequest="200"
+                        IsEnabled="{Binding IsEnabled,Mode=TwoWay}"
+                        Command="{Binding LoginCommand}">
+                </Button>
+            </StackLayout>
+        </ScrollView>
+    </ContentPage.Content>
+</ContentPage>

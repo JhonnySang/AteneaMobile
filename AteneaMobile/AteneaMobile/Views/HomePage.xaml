@@ -1,0 +1,15 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="AteneaMobile.Views.HomePage"
+             BindingContext="{Binding Main, Source={StaticResource Locator}}"
+             Title="Principal">
+    <ContentPage.Content>
+        <StackLayout>
+            <!--Aqui hace lo que quieras Ivancito, esta sera la página principal-->
+            <Label Text="Mi Pagina Principal!"
+                VerticalOptions="CenterAndExpand" 
+                HorizontalOptions="CenterAndExpand" />
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>
