@@ -13,6 +13,7 @@ namespace AteneaMobile.ViewModels
         #region Services
 
         private ApiService _apiService;
+        private NavigationService _navigationService;
 
         #endregion
 
@@ -101,11 +102,11 @@ namespace AteneaMobile.ViewModels
 
             //if (!response.IsSuccess)
             //{
-            //    this.IsRunning = false;
-            //    this.IsEnabled = true;
-            //    await Application.Current.MainPage.DisplayAlert("Error", "Usuario o Password Incorrecto", "Ok");
-            //    this.Password = string.Empty;
-            //    return;
+            //    //this.IsRunning = false;
+            //    //this.IsEnabled = true;
+            //    //await Application.Current.MainPage.DisplayAlert("Error", "Usuario o Password Incorrecto", "Ok");
+            //    //this.Password = string.Empty;
+            //    //return;
             //    await Application.Current.MainPage.DisplayAlert(
             //        "Error",
             //        response.Message,
@@ -116,15 +117,16 @@ namespace AteneaMobile.ViewModels
 
             this.IsRunning = false;
             this.IsEnabled = true;
-            
 
-            //var grupoUsuario = (Grupo) response.Result;
+
+            //var grupoUsuario = (Grupo)response.Result;
 
             //App.PerfilUsuario = grupoUsuario.GruDescripcion;
 
-            MainViewModel.GetInstance().Pacientes = new PacientesViewModel();
+            var mainViewModel = MainViewModel.GetInstance();
+            mainViewModel.Pacientes = new PacientesViewModel();// antes de cargar la viewPacientes, la ligo a la mainViewModel
             await Application.Current.MainPage.Navigation.PushModalAsync(new MainPage());
-            //await Application.Current.MainPage.Navigation.PushAsync(new NavigationPage(new MainPage()));
+            //await _navigationService.Navigate("MainPage"); // Aqui trabaja sin saber cual es la interfaz del usuario
         }
 
         #endregion
@@ -133,6 +135,7 @@ namespace AteneaMobile.ViewModels
 
         public LoginViewModel()
         {
+            _navigationService = new NavigationService();
             this.RecordarPassword = true;
             this.IsEnabled = true;
             _apiService = new ApiService();

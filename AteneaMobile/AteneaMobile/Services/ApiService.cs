@@ -305,14 +305,16 @@ namespace AteneaMobile.Services
             try
             {
                 var request = JsonConvert.SerializeObject(model);
-                var content = new StringContent(
-                    request,
-                    Encoding.UTF8,
-                    "application/json");
-                var client = new HttpClient();
-                client.BaseAddress = new Uri(urlBase);
-                var url = string.Format("{0}{1}", servicePrefix, controller);
-                var response = await client.PostAsync(url, content);
+                var buffer = Encoding.UTF8.GetBytes(request);
+                var byteContent = new ByteArrayContent(buffer);
+                byteContent.Headers.ContentType = new MediaTypeHeaderValue("application/x-www-form-urlencoded");
+                //var content = new StringContent(
+                //    request,
+                //    Encoding.UTF8,
+                //    "application/json"); //"application/x-www-form-urlencoded"
+                var client = new HttpClient {BaseAddress = new Uri(urlBase)};
+                var url = $"{servicePrefix}{controller}";
+                var response = await client.PostAsync(url, byteContent).ConfigureAwait(false);
 
                 if (!response.IsSuccessStatusCode)
                 {

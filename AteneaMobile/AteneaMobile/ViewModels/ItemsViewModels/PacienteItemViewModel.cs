@@ -1,13 +1,16 @@
-﻿using System.Windows.Input;
-using AteneaMobile.Models;
+﻿using AteneaMobile.Models;
+using AteneaMobile.Services;
 using GalaSoft.MvvmLight.Command;
-using Xamarin.Forms;
-using PacientesPage = AteneaMobile.Views.PacientesPage;
+using System.Windows.Input;
 
 namespace AteneaMobile.ViewModels.ItemsViewModels
 {
     public class PacienteItemViewModel : Paciente
     {
+        #region Services
+
+        private readonly NavigationService _navigationService =new NavigationService();
+        #endregion
         #region Commands
 
         public ICommand SelectPacienteCommand => new RelayCommand(SelectPaciente);
@@ -18,8 +21,9 @@ namespace AteneaMobile.ViewModels.ItemsViewModels
         private async void SelectPaciente()
         {
             // si no instancio la ViewModel relacionada a la Page, sino se instancia la Page no funciona.
-            MainViewModel.GetInstance().Paciente = new PacienteViewModel(this); // pasa toda la clase
-            await Application.Current.MainPage.Navigation.PushAsync(new PacientesPage());
+            var mainViewModel = MainViewModel.GetInstance();
+            mainViewModel.Paciente = new PacienteViewModel(this); // pasa toda la clase
+            await _navigationService.Navigate("PacientesPage");
         }
         #endregion
     }

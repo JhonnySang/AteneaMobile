@@ -1,8 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
-
-namespace AteneaMobile.Models
+﻿namespace AteneaMobile.Models
 {
     public class Grupo
     {
