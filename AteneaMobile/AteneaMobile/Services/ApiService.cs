@@ -305,28 +305,73 @@ namespace AteneaMobile.Services
             try
             {
                 var request = JsonConvert.SerializeObject(model);
-                var buffer = Encoding.UTF8.GetBytes(request);
-                var byteContent = new ByteArrayContent(buffer);
-                byteContent.Headers.ContentType = new MediaTypeHeaderValue("application/x-www-form-urlencoded");
-                //var content = new StringContent(
-                //    request,
-                //    Encoding.UTF8,
-                //    "application/json"); //"application/x-www-form-urlencoded"
+                //var buffer = Encoding.UTF8.GetBytes(request);
+                //var byteContent = new ByteArrayContent(buffer);
+                //byteContent.Headers.ContentType = new MediaTypeHeaderValue("application/x-www-form-urlencoded");
+                var content = new StringContent(
+                    request,
+                    Encoding.UTF8,
+                    "application/json"); //"application/x-www-form-urlencoded"
                 var client = new HttpClient {BaseAddress = new Uri(urlBase)};
                 var url = $"{servicePrefix}{controller}";
-                var response = await client.PostAsync(url, byteContent).ConfigureAwait(false);
+                var response = await client.PostAsync(url, content).ConfigureAwait(false);
+                var result = await response.Content.ReadAsStringAsync();
 
                 if (!response.IsSuccessStatusCode)
                 {
-                    return new Response
-                    {
-                        IsSuccess = false,
-                        Message = response.StatusCode.ToString(),
-                    };
+                    var error = JsonConvert.DeserializeObject<Response>(result);
+                    error.IsSuccess = false;
+                    return error;
+                }
+                
+                var newRecord = JsonConvert.DeserializeObject<T>(result);
+
+                return new Response
+                {
+                    IsSuccess = true,
+                    Message = "Record added OK",
+                    Result = newRecord,
+                };
+            }
+            catch (Exception ex)
+            {
+                return new Response
+                {
+                    IsSuccess = false,
+                    Message = ex.Message,
+                };
+            }
+        }
+
+        public async Task<Response> PostLogin<T>(
+            string urlBase,
+            string servicePrefix,
+            string controller,
+            T model)
+        {
+            try
+            {
+                var request = JsonConvert.SerializeObject(model);
+                //var buffer = Encoding.UTF8.GetBytes(request);
+                //var byteContent = new ByteArrayContent(buffer);
+                //byteContent.Headers.ContentType = new MediaTypeHeaderValue("application/x-www-form-urlencoded");
+                var content = new StringContent(
+                    request,
+                    Encoding.UTF8,
+                    "application/json"); //"application/x-www-form-urlencoded"
+                var client = new HttpClient { BaseAddress = new Uri(urlBase) };
+                var url = $"{servicePrefix}{controller}";
+                var response = await client.PostAsync(url, content).ConfigureAwait(false);
+                var result = await response.Content.ReadAsStringAsync();
+
+                if (!response.IsSuccessStatusCode)
+                {
+                    var error = JsonConvert.DeserializeObject<Response>(result);
+                    error.IsSuccess = false;
+                    return error;
                 }
 
-                var result = await response.Content.ReadAsStringAsync();
-                var newRecord = JsonConvert.DeserializeObject<T>(result);
+                var newRecord = JsonConvert.DeserializeObject<Grupo>(result);
 
                 return new Response
                 {

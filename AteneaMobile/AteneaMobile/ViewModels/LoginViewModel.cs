@@ -94,34 +94,37 @@ namespace AteneaMobile.ViewModels
             this.IsRunning = true;
             this.IsEnabled = false;
 
-            //var response = await _apiService.Post($"{App.UrlServer}", "/api", "/ApiLogin", new Usuario
-            //{
-            //    UsuLog = this.Usuario,
-            //    UsuPass = this.Password
-            //});
+            var usuarioLogin = new Usuario
+            {
+                UsuLog = this.Usuario,
+                UsuPass = this.Password
+            };
 
-            //if (!response.IsSuccess)
-            //{
-            //    //this.IsRunning = false;
-            //    //this.IsEnabled = true;
-            //    //await Application.Current.MainPage.DisplayAlert("Error", "Usuario o Password Incorrecto", "Ok");
-            //    //this.Password = string.Empty;
-            //    //return;
-            //    await Application.Current.MainPage.DisplayAlert(
-            //        "Error",
-            //        response.Message,
-            //        "Accept");
-            //    await Application.Current.MainPage.Navigation.PopAsync();
-            //    return;
-            //}
+            var response = await _apiService.PostLogin($"{App.UrlServer}", "/api", "/ApiLogin", usuarioLogin);
+
+            if (!response.IsSuccess)
+            {
+                //this.IsRunning = false;
+                //this.IsEnabled = true;
+                //await Application.Current.MainPage.DisplayAlert("Error", "Usuario o Password Incorrecto", "Ok");
+                //this.Password = string.Empty;
+                //return;
+                await Application.Current.MainPage.DisplayAlert(
+                    "Error",
+                    response.Message,
+                    "Accept");
+                //await Application.Current.MainPage.Navigation.PopAsync();
+                await _navigationService.Back();
+                return;
+            }
 
             this.IsRunning = false;
             this.IsEnabled = true;
 
 
-            //var grupoUsuario = (Grupo)response.Result;
+            var grupoUsuario = (Grupo)response.Result;
 
-            //App.PerfilUsuario = grupoUsuario.GruDescripcion;
+            App.PerfilUsuario = grupoUsuario.GruDescripcion;
 
             var mainViewModel = MainViewModel.GetInstance();
             mainViewModel.Pacientes = new PacientesViewModel();// antes de cargar la viewPacientes, la ligo a la mainViewModel
