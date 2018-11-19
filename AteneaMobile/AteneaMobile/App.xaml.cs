@@ -14,6 +14,10 @@ namespace AteneaMobile
 
         public static string PerfilUsuario = "";
 
+        public static NavigationPage Navigator { get; set; }
+
+        public static MainPage Master { get; set; }
+
         public App()
         {
             InitializeComponent();
@@ -25,6 +29,7 @@ namespace AteneaMobile
             MainPage = new LoginPage();
             //MainPage = new NavigationPage(new LoginPage());
         }
+
 
         protected override void OnStart()
         {

@@ -114,7 +114,7 @@ namespace AteneaMobile.ViewModels
                     response.Message,
                     "Accept");
                 //await Application.Current.MainPage.Navigation.PopAsync();
-                await _navigationService.Back();
+                await _navigationService.BackOnLogin();
                 return;
             }
 
@@ -126,10 +126,12 @@ namespace AteneaMobile.ViewModels
 
             App.PerfilUsuario = grupoUsuario.GruDescripcion;
 
+
             var mainViewModel = MainViewModel.GetInstance();
-            mainViewModel.Pacientes = new PacientesViewModel();// antes de cargar la viewPacientes, la ligo a la mainViewModel
-            await Application.Current.MainPage.Navigation.PushModalAsync(new MainPage());
-            //await _navigationService.Navigate("MainPage"); // Aqui trabaja sin saber cual es la interfaz del usuario
+
+            mainViewModel.Home = new HomeViewModel();
+            //await Application.Current.MainPage.Navigation.PushModalAsync(new MainPage());
+            _navigationService.SetMainPage("MainPage");
         }
 
         #endregion

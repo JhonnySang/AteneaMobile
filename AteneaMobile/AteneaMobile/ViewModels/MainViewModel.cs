@@ -10,6 +10,8 @@ namespace AteneaMobile.ViewModels
 
         public LoginViewModel Login { get; set; }
 
+        public HomeViewModel Home { get; set; }
+
         public PacientesViewModel Pacientes { get; set; }
 
         public PacienteViewModel Paciente { get; set; }
@@ -34,19 +36,19 @@ namespace AteneaMobile.ViewModels
                 new Menu
                 {
                     Icon = "paciente",
-                    PageName = "Consultar Paciente",
+                    PageName = "PacientesPage",
                     Title = "Pacientes"
                 },
                 new Menu
                 {
                     Icon = "setting",
-                    PageName = "Configuracion",
+                    PageName = "ConfiguracionPage",
                     Title = "Configuracion"
                 },
                 new Menu
                 {
                     Icon = "ic_launcher",
-                    PageName = "Salir",
+                    PageName = "LoginPage",
                     Title = "Salir"
                 }
             };

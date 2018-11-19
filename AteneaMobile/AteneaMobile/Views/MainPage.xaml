@@ -10,7 +10,8 @@
     </MasterDetailPage.Master>
 
     <MasterDetailPage.Detail>
-        <NavigationPage>
+        <NavigationPage
+            x:Name="Navigator">
             <x:Arguments>
                 <views1:HomePage />
             </x:Arguments>

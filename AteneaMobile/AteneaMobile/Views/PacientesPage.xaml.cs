@@ -7,7 +7,6 @@ namespace AteneaMobile.Views
     [XamlCompilation(XamlCompilationOptions.Compile)]
     public partial class PacientesPage : ContentPage
     {
-
         public PacientesPage()
         {
             InitializeComponent();
