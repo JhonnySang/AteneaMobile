@@ -4,20 +4,40 @@
              x:Class="AteneaMobile.Views.MenuPage"
              BindingContext="{Binding Main, Source={StaticResource Locator}}"
              Title="Menu">
-
-    <StackLayout VerticalOptions="FillAndExpand">
-        <ListView x:Name="ListViewMenu"
-                  HasUnevenRows="True">
-            <ListView.ItemTemplate>
-                <DataTemplate>
-                    <ViewCell>
-                        <Grid Padding="10">
-                            <Label Text="{Binding Title}" FontSize="20"/>
-                        </Grid>
-                    </ViewCell>
-                </DataTemplate>
-            </ListView.ItemTemplate>
-        </ListView>
-    </StackLayout>
-
+    <ContentPage.Content>
+        <StackLayout Padding="10,30">
+            <Label
+                FontAttributes="Bold"
+                FontSize="Large"
+                Text="AteneaTucumano"></Label>
+            <ListView 
+            ItemsSource="{Binding MyMenu}"
+            HasUnevenRows="True"
+            SeparatorVisibility="None">
+                <ListView.ItemTemplate>
+                    <DataTemplate>
+                        <ViewCell>
+                            <Grid>
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="Auto"/>
+                                    <ColumnDefinition Width="*"/>
+                                </Grid.ColumnDefinitions>
+                                <Image
+                                    Grid.Column="0"
+                                    HeightRequest="50"
+                                    Source="{Binding Icon}"
+                                    WidthRequest="50">
+                                </Image>
+                                <Label
+                                    Grid.Column="1"
+                                    Text="{Binding Title}"
+                                    VerticalOptions="Center">
+                                </Label>
+                            </Grid>
+                        </ViewCell>
+                    </DataTemplate>
+                </ListView.ItemTemplate>
+            </ListView>
+        </StackLayout>
+    </ContentPage.Content>
 </ContentPage>

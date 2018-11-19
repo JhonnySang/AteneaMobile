@@ -12,7 +12,7 @@
     <MasterDetailPage.Detail>
         <NavigationPage>
             <x:Arguments>
-                <views1:PacientesPage />
+                <views1:HomePage />
             </x:Arguments>
         </NavigationPage>
     </MasterDetailPage.Detail>
