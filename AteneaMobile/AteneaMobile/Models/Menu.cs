@@ -9,7 +9,7 @@ namespace AteneaMobile.Models
     {
         #region Services
 
-        private NavigationService _navigationService =new NavigationService();
+        private readonly NavigationService _navigationService =new NavigationService();
         #endregion
 
         #region Properties

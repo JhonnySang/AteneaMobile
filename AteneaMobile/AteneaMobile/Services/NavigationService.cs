@@ -31,6 +31,9 @@ namespace AteneaMobile.Services
                 case "PacientesPage":
                     await App.Navigator.PushAsync(new PacientesPage());
                     break;
+                case "PacientePage":
+                    await App.Navigator.PushAsync(new PacientePage());
+                    break;
                 case "EmpleadosPage":
                     await App.Navigator.PushAsync(new EmpleadosPage());
                     break;

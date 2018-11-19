@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Linq;
 using System.Windows.Input;
@@ -99,15 +100,15 @@ namespace AteneaMobile.ViewModels
             }
 
             this.pacienteList = (List<Paciente>)response.Result;
-            ToPacienteItemViewModel(pacienteList);
+            ToPacienteItemViewModel();
             this.Pacientes = new ObservableCollection<PacienteItemViewModel>(
                 pacienteViewModelsList);
             this.IsRefreshing = false;
         }
 
-        private void ToPacienteItemViewModel(List<Paciente> pacientesList)
+        private void ToPacienteItemViewModel()
         {
-            pacienteViewModelsList = AutoMapper.Mapper.Map<List<PacienteItemViewModel>>(pacientesList);
+            pacienteViewModelsList = AutoMapper.Mapper.Map<List<PacienteItemViewModel>>(pacienteList);
         }
 
         #endregion
@@ -126,9 +127,25 @@ namespace AteneaMobile.ViewModels
             }
             else
             {
-                this.Pacientes = new ObservableCollection<PacienteItemViewModel>(
-                    pacienteViewModelsList.Where(l => l.perNombre.ToLower().Contains(this.Filter.ToLower()) ||
-                                                      l.perApellido.ToLower().Contains(this.Filter.ToLower())));
+                try
+                {
+                    var dni = 0;
+
+                    if (Filter.Length == 8)
+                    {
+                        int.TryParse(Filter, out dni);
+                    }
+                    
+                    this.Pacientes = new ObservableCollection<PacienteItemViewModel>(
+                        pacienteViewModelsList.Where(l => l.perNombre.ToLower().Contains(this.Filter.ToLower()) ||
+                                                          l.perApellido.ToLower().Contains(this.Filter.ToLower())
+                                                          || l.perDni == dni));
+                }
+                catch
+                {
+                    return;
+                }
+                
             }
         }
 

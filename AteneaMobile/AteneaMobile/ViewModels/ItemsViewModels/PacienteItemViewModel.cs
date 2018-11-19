@@ -21,9 +21,8 @@ namespace AteneaMobile.ViewModels.ItemsViewModels
         private async void SelectPaciente()
         {
             // si no instancio la ViewModel relacionada a la Page, sino se instancia la Page no funciona.
-            var mainViewModel = MainViewModel.GetInstance();
-            mainViewModel.Paciente = new PacienteViewModel(this); // pasa toda la clase
-            await _navigationService.NavigateOnMaster("PacientesPage");
+            MainViewModel.GetInstance().Paciente = new PacienteViewModel(this);
+            await _navigationService.NavigateOnMaster("PacientePage");
         }
         #endregion
     }
