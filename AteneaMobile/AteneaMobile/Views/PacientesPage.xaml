@@ -45,7 +45,7 @@
                                             TextColor="Black">
                                         </Label>
                                         <Label 
-                                            Text="{Binding perDni}"
+                                            Text="{Binding perDomicilio}"
                                             TextColor="Black">
                                         </Label>
                                     </StackLayout>

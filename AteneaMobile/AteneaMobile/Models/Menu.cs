@@ -25,13 +25,13 @@ namespace AteneaMobile.Models
         {
             switch (PageName)
             {
-                case "PacientesPage":
-                    MainViewModel.GetInstance().Pacientes = new PacientesViewModel();
-                    await _navigationService.NavigateOnMaster("PacientesPage");
-                    break;
                 case "LoginPage":
                     MainViewModel.GetInstance().Login=new LoginViewModel();
                     _navigationService.SetMainPage("LoginPage");
+                    break;
+                case "PacientesPage":
+                    MainViewModel.GetInstance().Pacientes = new PacientesViewModel();
+                    await _navigationService.NavigateOnMaster("PacientesPage");
                     break;
             }
         }

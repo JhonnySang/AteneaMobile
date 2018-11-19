@@ -26,16 +26,16 @@ namespace AteneaMobile.Services
             switch (pageName)
             {
                 case "MainPage":
-                    await Application.Current.MainPage.Navigation.PushAsync(new MainPage());
+                    await App.Navigator.PushAsync(new MainPage());
                     break;
                 case "PacientesPage":
-                    await Application.Current.MainPage.Navigation.PushAsync(new PacientesPage());
+                    await App.Navigator.PushAsync(new PacientesPage());
                     break;
                 case "EmpleadosPage":
-                    await Application.Current.MainPage.Navigation.PushAsync(new EmpleadosPage());
+                    await App.Navigator.PushAsync(new EmpleadosPage());
                     break;
                 case "HomePage":
-                    await Application.Current.MainPage.Navigation.PushAsync(new HomePage());
+                    await App.Navigator.PushAsync(new HomePage());
                     break;
             }
         }
