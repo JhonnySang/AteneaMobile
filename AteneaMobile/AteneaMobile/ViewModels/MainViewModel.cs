@@ -16,6 +16,10 @@ namespace AteneaMobile.ViewModels
 
         public PacienteViewModel Paciente { get; set; }
 
+        public EmpleadosViewModel Empleados { get; set; }
+
+        public EmpleadoViewModel Empleado { get; set; }
+
         #endregion
 
         #region Constructors
@@ -41,9 +45,9 @@ namespace AteneaMobile.ViewModels
                 },
                 new Menu
                 {
-                    Icon = "setting",
-                    PageName = "ConfiguracionPage",
-                    Title = "Configuracion"
+                    Icon = "empleado",
+                    PageName = "EmpleadosPage",
+                    Title = "Empleados"
                 },
                 new Menu
                 {

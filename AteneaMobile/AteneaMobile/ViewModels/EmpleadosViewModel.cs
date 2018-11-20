@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Linq;
+using System.Text;
 using System.Windows.Input;
 using AteneaMobile.Models;
 using AteneaMobile.Services;
@@ -11,7 +12,8 @@ using Xamarin.Forms;
 
 namespace AteneaMobile.ViewModels
 {
-    public class PacientesViewModel : BaseViewModel
+
+    public class EmpleadosViewModel : BaseViewModel
     {
         #region Services
 
@@ -21,9 +23,9 @@ namespace AteneaMobile.ViewModels
 
         #region Attributes
 
-        private List<Paciente> pacienteList;
-        private List<PacienteItemViewModel> pacienteViewModelsList;
-        private ObservableCollection<PacienteItemViewModel> pacientes;
+        private List<Empleado> empleadoList;
+        private List<EmpleadoItemViewModel> empleadoVMList;
+        private ObservableCollection<EmpleadoItemViewModel> empleados;
         private bool isRefreshing;
         private string filter;
 
@@ -47,27 +49,27 @@ namespace AteneaMobile.ViewModels
             set => SetProperty(ref isRefreshing, value);
         }
 
-        public ObservableCollection<PacienteItemViewModel> Pacientes
+        public ObservableCollection<EmpleadoItemViewModel> Empleados
         {
-            get => this.pacientes;
-            set => SetProperty(ref this.pacientes, value);
+            get => this.empleados;
+            set => SetProperty(ref this.empleados, value);
         }
 
         #endregion
 
         #region Constructors
 
-        public PacientesViewModel()
+        public EmpleadosViewModel()
         {
             this._apiService = new ApiService();
-            this.LoadPacientes();
+            this.LoadEmpleados();
         }
 
         #endregion
 
         #region Methods
 
-        private async void LoadPacientes()
+        private async void LoadEmpleados()
         {
             this.IsRefreshing = true;
             var connection = await this._apiService.CheckConnection();
@@ -83,10 +85,10 @@ namespace AteneaMobile.ViewModels
                 return;
             }
 
-            var response = await this._apiService.GetList<Paciente>(
+            var response = await this._apiService.GetList<Empleado>(
                 $"{App.UrlServer}",
                 "/api",
-                "/PacientesMobile");
+                "/EmpleadosMobile");
 
             if (!response.IsSuccess)
             {
@@ -99,23 +101,23 @@ namespace AteneaMobile.ViewModels
                 return;
             }
 
-            this.pacienteList = (List<Paciente>)response.Result;
-            ToPacienteItemViewModel();
-            this.Pacientes = new ObservableCollection<PacienteItemViewModel>(
-                pacienteViewModelsList);
+            this.empleadoList = (List<Empleado>)response.Result;
+            ToempleadoItemViewModel();
+            this.Empleados = new ObservableCollection<EmpleadoItemViewModel>(
+                empleadoVMList);
             this.IsRefreshing = false;
         }
 
-        private void ToPacienteItemViewModel()
+        private void ToempleadoItemViewModel()
         {
-            pacienteViewModelsList = AutoMapper.Mapper.Map<List<PacienteItemViewModel>>(pacienteList);
+            empleadoVMList = AutoMapper.Mapper.Map<List<EmpleadoItemViewModel>>(empleadoList);
         }
 
         #endregion
 
         #region Commands
 
-        public ICommand RefreshCommand => new RelayCommand(LoadPacientes);
+        public ICommand RefreshCommand => new RelayCommand(LoadEmpleados);
 
         public ICommand SearchCommand => new RelayCommand(Search);
 
@@ -123,7 +125,7 @@ namespace AteneaMobile.ViewModels
         {
             if (string.IsNullOrEmpty(this.Filter))
             {
-                this.Pacientes = new ObservableCollection<PacienteItemViewModel>(pacienteViewModelsList);
+                this.Empleados = new ObservableCollection<EmpleadoItemViewModel>(empleadoVMList);
             }
             else
             {
@@ -135,17 +137,18 @@ namespace AteneaMobile.ViewModels
                     {
                         int.TryParse(Filter, out dni);
                     }
-                    
-                    this.Pacientes = new ObservableCollection<PacienteItemViewModel>(
-                        pacienteViewModelsList.Where(l => l.perNombre.ToLower().Contains(this.Filter.ToLower()) ||
-                                                          l.perApellido.ToLower().Contains(this.Filter.ToLower())
-                                                          || l.perDni == dni));
+
+                    this.Empleados = new ObservableCollection<EmpleadoItemViewModel>(
+                        empleadoVMList.Where(l => l.perNombre.ToLower().Contains(this.Filter.ToLower()) ||
+                                                  l.perApellido.ToLower().Contains(this.Filter.ToLower())
+                                                  || l.empCargo.ToLower().Contains(this.Filter.ToLower())
+                                                  || l.perDni == dni));
                 }
                 catch
                 {
                     return;
                 }
-                
+
             }
         }
 

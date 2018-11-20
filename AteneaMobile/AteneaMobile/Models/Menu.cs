@@ -33,6 +33,10 @@ namespace AteneaMobile.Models
                     MainViewModel.GetInstance().Pacientes = new PacientesViewModel();
                     await _navigationService.NavigateOnMaster("PacientesPage");
                     break;
+                case "EmpleadosPage":
+                    MainViewModel.GetInstance().Empleados = new EmpleadosViewModel();
+                    await _navigationService.NavigateOnMaster("EmpleadosPage");
+                    break;
             }
         }
 
