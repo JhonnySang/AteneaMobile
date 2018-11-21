@@ -121,6 +121,20 @@
                         Text="{Binding Paciente.perMail}"
                         TextColor="Black">
                     </Label>
+                    
+                    <Label
+                        Grid.Column="0"
+                        Grid.Row="7"
+                        Text="Fecha de Alta : "
+                        TextColor="Black">
+                    </Label>
+                    <Label
+                        Grid.Column="1"
+                        Grid.Row="7"
+                        FontAttributes="Bold"
+                        Text="{Binding Paciente.pacFchAlta}"
+                        TextColor="Black">
+                    </Label>
                     <Label
                         Grid.Column="0"
                         Grid.Row="7"
@@ -134,19 +148,6 @@
                         VerticalOptions="CenterAndExpand"
                         IsToggled="{Binding Paciente.pacEstado, Mode=Default}">
                     </Switch>
-                    <Label
-                        Grid.Column="0"
-                        Grid.Row="8"
-                        Text="Fecha de Alta : "
-                        TextColor="Black">
-                    </Label>
-                    <Label
-                        Grid.Column="1"
-                        Grid.Row="8"
-                        FontAttributes="Bold"
-                        Text="{Binding Paciente.pacFchAlta}"
-                        TextColor="Black">
-                    </Label>
                 </Grid>
             </StackLayout>
         </ScrollView>

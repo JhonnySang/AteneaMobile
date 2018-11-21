@@ -24,6 +24,10 @@ namespace AteneaMobile.ViewModels
 
         public TurnoViewModel Turno { get; set; }
 
+        public CursosViewModel Cursos { get; set; }
+
+        public CursoViewModel Curso { get; set; }
+
         #endregion
 
         #region Constructors
@@ -59,6 +63,12 @@ namespace AteneaMobile.ViewModels
                     Icon = "turno",
                     PageName = "TurnosPage",
                     Title = "Turnos"
+                },
+                new Menu
+                {
+                    Icon = "Curso",
+                    PageName = "CursosPage",
+                    Title = "Cursos"
                 },
                 new Menu
                 {

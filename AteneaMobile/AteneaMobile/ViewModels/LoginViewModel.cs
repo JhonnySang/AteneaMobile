@@ -75,7 +75,6 @@ namespace AteneaMobile.ViewModels
                     "Error",
                     connection.Message,
                     "Accept");
-                await _navigationService.BackOnLogin();
                 return;
             }
 
@@ -108,8 +107,6 @@ namespace AteneaMobile.ViewModels
                     "Error",
                     response.Message,
                     "Accept");
-                //await Application.Current.MainPage.Navigation.PopAsync();
-                await _navigationService.BackOnLogin();
                 return;
             }
 
