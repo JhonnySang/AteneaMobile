@@ -20,6 +20,10 @@ namespace AteneaMobile.ViewModels
 
         public EmpleadoViewModel Empleado { get; set; }
 
+        public TurnosViewModel Turnos { get; set; }
+
+        public TurnoViewModel Turno { get; set; }
+
         #endregion
 
         #region Constructors
@@ -30,6 +34,7 @@ namespace AteneaMobile.ViewModels
             this.Login = new LoginViewModel();
             LoadMenu();
         }
+        #endregion
 
         #region Methods
 
@@ -51,17 +56,20 @@ namespace AteneaMobile.ViewModels
                 },
                 new Menu
                 {
+                    Icon = "turno",
+                    PageName = "TurnosPage",
+                    Title = "Turnos"
+                },
+                new Menu
+                {
                     Icon = "ic_launcher",
                     PageName = "LoginPage",
                     Title = "Salir"
                 }
             };
         }
-
         #endregion
-
-        #endregion
-
+        
         #region Singleton
         // vamos a poder llamar la pagina principal desde cualquier clase sin necesidad de tener q instanciarla
         private static MainViewModel instance;

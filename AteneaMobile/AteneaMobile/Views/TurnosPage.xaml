@@ -1,19 +1,19 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-             x:Class="AteneaMobile.Views.EmpleadosPage"
+             x:Class="AteneaMobile.Views.TurnosPage"
              BindingContext="{Binding Main, Source={StaticResource Locator}}"
-             Title="Empleados">
+             Title="Turnos">
     <ContentPage.Content>
         <StackLayout
-            BindingContext="{Binding Empleados}">
+            BindingContext="{Binding Turnos}">
             <SearchBar Placeholder="Buscar..."
                        Text="{Binding Filter,Mode=TwoWay}"
                        SearchCommand="{Binding SearchCommand}"></SearchBar>
             <ListView 
                 HasUnevenRows="true" IsPullToRefreshEnabled="true"
                 IsRefreshing="{Binding IsRefreshing, Mode=TwoWay}"
-                ItemsSource="{Binding Empleados}"
+                ItemsSource="{Binding Turnos}"
                 SeparatorVisibility="None"
                 RefreshCommand="{Binding RefreshCommand}">
                 <ListView.ItemTemplate>
@@ -24,7 +24,7 @@
                                 HasShadow="true"
                                 Margin="5">
                                 <Frame.GestureRecognizers>
-                                    <TapGestureRecognizer Command="{Binding SelectEmpleadoCommand}"/>
+                                    <TapGestureRecognizer Command="{Binding SelectTurnoCommand}"/>
                                 </Frame.GestureRecognizers>
                                 <Grid>
                                     <Grid.ColumnDefinitions>
@@ -36,12 +36,20 @@
                                         VerticalOptions="Center">
                                         <Label 
                                             FontAttributes="Bold"
-                                            FontSize="Medium" 
-                                            Text="{Binding apyNom}"
+                                            FontSize="Medium"
+                                            VerticalOptions="CenterAndExpand"
+                                            HorizontalOptions="CenterAndExpand"
+                                            Text="{Binding practica}"
                                             TextColor="Black">
                                         </Label>
                                         <Label 
-                                            Text="{Binding empCargo}"
+                                            FontAttributes="Bold"
+                                            FontSize="Medium" 
+                                            Text="{Binding profesional}"
+                                            TextColor="Black">
+                                        </Label>
+                                        <Label 
+                                            Text="{Binding paciente}"
                                             TextColor="Black">
                                         </Label>
                                     </StackLayout>

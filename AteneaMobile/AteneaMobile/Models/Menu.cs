@@ -37,6 +37,10 @@ namespace AteneaMobile.Models
                     MainViewModel.GetInstance().Empleados = new EmpleadosViewModel();
                     await _navigationService.NavigateOnMaster("EmpleadosPage");
                     break;
+                case "TurnosPage":
+                    MainViewModel.GetInstance().Turnos = new TurnosViewModel();
+                    await _navigationService.NavigateOnMaster("TurnosPage");
+                    break;
             }
         }
 

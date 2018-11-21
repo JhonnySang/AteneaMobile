@@ -104,11 +104,6 @@ namespace AteneaMobile.ViewModels
 
             if (!response.IsSuccess)
             {
-                //this.IsRunning = false;
-                //this.IsEnabled = true;
-                //await Application.Current.MainPage.DisplayAlert("Error", "Usuario o Password Incorrecto", "Ok");
-                //this.Password = string.Empty;
-                //return;
                 await Application.Current.MainPage.DisplayAlert(
                     "Error",
                     response.Message,
@@ -118,9 +113,14 @@ namespace AteneaMobile.ViewModels
                 return;
             }
 
-            this.IsRunning = false;
-            this.IsEnabled = true;
-
+            if (response.Result == null)
+            {
+                this.IsRunning = false;
+                this.IsEnabled = true;
+                await Application.Current.MainPage.DisplayAlert("Error", "Usuario o Password Incorrecto", "Ok");
+                this.Password = string.Empty;
+                return;
+            }
 
             var grupoUsuario = (Grupo)response.Result;
 
