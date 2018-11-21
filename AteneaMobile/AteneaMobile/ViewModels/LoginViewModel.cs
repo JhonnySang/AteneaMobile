@@ -107,6 +107,8 @@ namespace AteneaMobile.ViewModels
                     "Error",
                     response.Message,
                     "Accept");
+                this.IsRunning = false;
+                this.IsEnabled = true;
                 return;
             }
 
