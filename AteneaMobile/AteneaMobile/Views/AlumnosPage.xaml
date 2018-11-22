@@ -1,19 +1,20 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-             x:Class="AteneaMobile.Views.CursosPage"
+             x:Class="AteneaMobile.Views.AlumnosPage"
              BindingContext="{Binding Main, Source={StaticResource Locator}}"
-             Title="Cursos">
+             Title="Alumnos"
+             Icon="alumno">
     <ContentPage.Content>
         <StackLayout
-            BindingContext="{Binding Cursos}">
+            BindingContext="{Binding Alumnos}">
             <SearchBar Placeholder="Buscar..."
                        Text="{Binding Filter,Mode=TwoWay}"
                        SearchCommand="{Binding SearchCommand}"></SearchBar>
             <ListView 
                 HasUnevenRows="true" IsPullToRefreshEnabled="true"
                 IsRefreshing="{Binding IsRefreshing, Mode=TwoWay}"
-                ItemsSource="{Binding Cursos}"
+                ItemsSource="{Binding Alumnos}"
                 SeparatorVisibility="None"
                 RefreshCommand="{Binding RefreshCommand}">
                 <ListView.ItemTemplate>
@@ -24,7 +25,7 @@
                                 HasShadow="true"
                                 Margin="5">
                                 <Frame.GestureRecognizers>
-                                    <TapGestureRecognizer Command="{Binding SelectCursoCommand}"/>
+                                    <TapGestureRecognizer Command="{Binding SelectAlumnoCommand}"/>
                                 </Frame.GestureRecognizers>
                                 <Grid>
                                     <Grid.ColumnDefinitions>
@@ -37,25 +38,13 @@
                                         <Label 
                                             FontAttributes="Bold"
                                             FontSize="Medium" 
-                                            Text="{Binding curDescripcion}"
+                                            Text="{Binding apyNom}"
                                             TextColor="Black">
                                         </Label>
-                                        <Grid>
-                                            <Grid.ColumnDefinitions>
-                                                <ColumnDefinition Width="*"/>
-                                                <ColumnDefinition Width="*"/>
-                                            </Grid.ColumnDefinitions>
-                                            <Label 
-                                                Grid.Column="0"
-                                                Text="Fecha Inicio :"
-                                                TextColor="Black">
-                                            </Label>
-                                            <Label 
-                                            Grid.Column="1"
-                                            Text="{Binding curFchInicio , StringFormat='{0:MM/dd/yyyy}'}"
+                                        <Label 
+                                            Text="{Binding aluFchInscripcion}"
                                             TextColor="Black">
-                                            </Label>
-                                        </Grid>
+                                        </Label>
                                     </StackLayout>
                                     <Image 
                                         Grid.Column="1"

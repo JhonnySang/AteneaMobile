@@ -47,11 +47,11 @@ namespace AteneaMobile.ViewModels
             set => SetProperty(ref isRunnig, value);
         }
 
-        public bool RecordarPassword
-        {
-            get => recordarPassword;
-            set => SetProperty(ref recordarPassword, value);
-        }
+        //public bool RecordarPassword
+        //{
+        //    get => recordarPassword;
+        //    set => SetProperty(ref recordarPassword, value);
+        //}
 
         public bool IsEnabled
         {
@@ -129,7 +129,6 @@ namespace AteneaMobile.ViewModels
             var mainViewModel = MainViewModel.GetInstance();
 
             mainViewModel.Home = new HomeViewModel();
-            //await Application.Current.MainPage.Navigation.PushModalAsync(new MainPage());
             _navigationService.SetMainPage("MainPage");
         }
 
@@ -140,7 +139,6 @@ namespace AteneaMobile.ViewModels
         public LoginViewModel()
         {
             _navigationService = new NavigationService();
-            this.RecordarPassword = true;
             this.IsEnabled = true;
             _apiService = new ApiService();
             this.Usuario = "admin";

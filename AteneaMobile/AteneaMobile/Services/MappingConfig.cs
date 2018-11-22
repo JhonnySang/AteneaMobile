@@ -10,6 +10,9 @@ namespace AteneaMobile.Services
             AutoMapper.Mapper.Initialize(config => 
                 config.CreateMap<Paciente, PacientesViewModel>().ReverseMap()
             );
+            MapeoRegistrado = true;
         }
+
+        public static bool MapeoRegistrado { get; set; }
     }
 }

@@ -1,0 +1,11 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<TabbedPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:tabs="clr-namespace:AteneaMobile.Views"
+             x:Class="AteneaMobile.Views.CursoTabbedPage"
+             Title="Curso">
+    <TabbedPage.Children>
+        <tabs:CursoPage></tabs:CursoPage>
+        <tabs:AlumnosPage></tabs:AlumnosPage>
+    </TabbedPage.Children>
+</TabbedPage>

@@ -145,7 +145,7 @@
                         Grid.Column="1"
                         Grid.Row="8"
                         FontAttributes="Bold"
-                        Text="{Binding Empleado.empFchAlta}"
+                        Text="{Binding Empleado.empFchAlta , StringFormat='{0:MM/dd/yyyy}'}"
                         TextColor="Black">
                     </Label>
                     <Label

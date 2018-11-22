@@ -1,22 +1,21 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-             x:Class="AteneaMobile.Views.PacientePage"
+             x:Class="AteneaMobile.Views.AlumnoPage"
              BindingContext="{Binding Main, Source={StaticResource Locator}}"
-             Title="Paciente">
+             Title="Alumno">
     <ContentPage.Content>
         <ScrollView
-            BindingContext="{Binding Paciente}">
+            BindingContext="{Binding Alumno}">
             <StackLayout Padding="5">
                 <Label FontSize="Large"
                        FontAttributes="Bold"
                        HorizontalOptions="Center"
-                       Text="{Binding Paciente.apyNom}"
+                       Text="{Binding Alumno.apyNom}"
                        TextColor="Black">
                 </Label>
                 <Grid>
                     <Grid.RowDefinitions>
-                        <RowDefinition />
                         <RowDefinition />
                         <RowDefinition />
                         <RowDefinition />
@@ -40,7 +39,7 @@
                         Grid.Column="1"
                         Grid.Row="0"
                         FontAttributes="Bold"
-                        Text="{Binding Paciente.perDni}"
+                        Text="{Binding Alumno.perDni}"
                         TextColor="Black">
                     </Label>
                     <Label
@@ -53,7 +52,7 @@
                         Grid.Column="1"
                         Grid.Row="1"
                         FontAttributes="Bold"
-                        Text="{Binding Paciente.perEdad}"
+                        Text="{Binding Alumno.perEdad}"
                         TextColor="Black">
                     </Label>
                     <Label
@@ -66,7 +65,7 @@
                         Grid.Column="1"
                         Grid.Row="2"
                         FontAttributes="Bold"
-                        Text="{Binding Paciente.perProvincia}"
+                        Text="{Binding Alumno.perProvincia}"
                         TextColor="Black">
                     </Label>
                     <Label
@@ -79,7 +78,7 @@
                         Grid.Column="1"
                         Grid.Row="3"
                         FontAttributes="Bold"
-                        Text="{Binding Paciente.perLocalidad}"
+                        Text="{Binding Alumno.perLocalidad}"
                         TextColor="Black">
                     </Label>
                     <Label
@@ -92,7 +91,7 @@
                         Grid.Column="1"
                         Grid.Row="4"
                         FontAttributes="Bold"
-                        Text="{Binding Paciente.perDomicilio}"
+                        Text="{Binding Alumno.perDomicilio}"
                         TextColor="Black">
                     </Label>
                     <Label
@@ -105,7 +104,7 @@
                         Grid.Column="1"
                         Grid.Row="5"
                         FontAttributes="Bold"
-                        Text="{Binding Paciente.perTelefono}"
+                        Text="{Binding Alumno.perTelefono}"
                         TextColor="Black">
                     </Label>
                     <Label
@@ -118,36 +117,22 @@
                         Grid.Column="1"
                         Grid.Row="6"
                         FontAttributes="Bold"
-                        Text="{Binding Paciente.perMail}"
+                        Text="{Binding Alumno.perMail}"
                         TextColor="Black">
                     </Label>
-                    
                     <Label
                         Grid.Column="0"
                         Grid.Row="7"
-                        Text="Fecha de Alta : "
+                        Text="Fecha de Inscripcion : "
                         TextColor="Black">
                     </Label>
                     <Label
                         Grid.Column="1"
                         Grid.Row="7"
                         FontAttributes="Bold"
-                        Text="{Binding Paciente.pacFchAlta , StringFormat='{0:MM/dd/yyyy}'}"
+                        Text="{Binding Alumno.aluFchInscripcion}"
                         TextColor="Black">
                     </Label>
-                    <Label
-                        Grid.Column="0"
-                        Grid.Row="8"
-                        Text="Estado : "
-                        TextColor="Black">
-                    </Label>
-                    <Switch
-                        Grid.Column="1"
-                        Grid.Row="8"
-                        HorizontalOptions="CenterAndExpand"
-                        VerticalOptions="CenterAndExpand"
-                        IsToggled="{Binding Paciente.pacEstado, Mode=Default}">
-                    </Switch>
                 </Grid>
             </StackLayout>
         </ScrollView>

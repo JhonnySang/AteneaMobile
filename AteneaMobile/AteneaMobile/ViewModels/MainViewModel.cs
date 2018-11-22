@@ -28,6 +28,10 @@ namespace AteneaMobile.ViewModels
 
         public CursoViewModel Curso { get; set; }
 
+        public AlumnosViewModel Alumnos { get; set; }
+
+        public AlumnoViewModel Alumno { get; set; }
+
         #endregion
 
         #region Constructors

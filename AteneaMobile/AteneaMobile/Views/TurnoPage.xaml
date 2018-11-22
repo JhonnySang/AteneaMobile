@@ -61,7 +61,7 @@
                         Grid.Column="1"
                         Grid.Row="2"
                         FontAttributes="Bold"
-                        Text="{Binding Turno.ptuFecha}"
+                        Text="{Binding Turno.ptuFecha , StringFormat='{0:MM/dd/yyyy}'}"
                         TextColor="Black">
                     </Label>
                     <Label

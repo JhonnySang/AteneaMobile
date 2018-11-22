@@ -54,7 +54,7 @@
                 <ActivityIndicator
                     VerticalOptions="Center"
                     IsRunning="{Binding IsRunning, Mode=TwoWay}"></ActivityIndicator>
-                <StackLayout>
+                <!--<StackLayout>
                     <Grid
                         VerticalOptions="Start">
                         <Grid.ColumnDefinitions>
@@ -71,8 +71,7 @@
                         HorizontalOptions="End"
                         IsToggled="{Binding RecordarPassword,Mode=TwoWay}"></Switch>
                     </Grid>
-                </StackLayout>
-                
+                </StackLayout>-->
                 <Button Text="Entrar" 
                         TextColor="Yellow" 
                         FontSize="Large"

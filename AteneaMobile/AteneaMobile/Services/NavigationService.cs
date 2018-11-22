@@ -49,6 +49,9 @@ namespace AteneaMobile.Services
                 case "CursosPage":
                     await App.Navigator.PushAsync(new CursosPage());
                     break;
+                case "CursoTabbedPage":
+                    await App.Navigator.PushAsync(new CursoTabbedPage());
+                    break;
                 case "CursoPage":
                     await App.Navigator.PushAsync(new CursoPage());
                     break;

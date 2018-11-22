@@ -22,10 +22,6 @@ namespace AteneaMobile
         {
             InitializeComponent();
 
-            MainPage = new MainPage();
-
-            MappingConfig.RegisterMaps();
-
             MainPage = new LoginPage();
             //MainPage = new NavigationPage(new LoginPage());
         }
@@ -34,6 +30,10 @@ namespace AteneaMobile
         protected override void OnStart()
         {
             // Handle when your app starts
+            if (!MappingConfig.MapeoRegistrado)
+            {
+                MappingConfig.RegisterMaps();
+            }
         }
 
         protected override void OnSleep()
