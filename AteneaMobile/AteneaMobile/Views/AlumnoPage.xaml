@@ -11,7 +11,7 @@
                 <Label FontSize="Large"
                        FontAttributes="Bold"
                        HorizontalOptions="Center"
-                       Text="{Binding Alumno.apyNom}"
+                       Text="{Binding CursoInscripcion.alumnoApyNom}"
                        TextColor="Black">
                 </Label>
                 <Grid>
@@ -32,105 +32,27 @@
                     <Label
                         Grid.Column="0"
                         Grid.Row="0"
-                        Text="Dni : "
+                        Text="Observaciones : "
                         TextColor="Black">
                     </Label>
                     <Label
                         Grid.Column="1"
                         Grid.Row="0"
                         FontAttributes="Bold"
-                        Text="{Binding Alumno.perDni}"
+                        Text="{Binding CursoInscripcion.cinObservaciones}"
                         TextColor="Black">
                     </Label>
                     <Label
                         Grid.Column="0"
                         Grid.Row="1"
-                        Text="Edad : "
-                        TextColor="Black">
-                    </Label>
-                    <Label
-                        Grid.Column="1"
-                        Grid.Row="1"
-                        FontAttributes="Bold"
-                        Text="{Binding Alumno.perEdad}"
-                        TextColor="Black">
-                    </Label>
-                    <Label
-                        Grid.Column="0"
-                        Grid.Row="2"
-                        Text="Provincia : "
-                        TextColor="Black">
-                    </Label>
-                    <Label
-                        Grid.Column="1"
-                        Grid.Row="2"
-                        FontAttributes="Bold"
-                        Text="{Binding Alumno.perProvincia}"
-                        TextColor="Black">
-                    </Label>
-                    <Label
-                        Grid.Column="0"
-                        Grid.Row="3"
-                        Text="Localidad : "
-                        TextColor="Black">
-                    </Label>
-                    <Label
-                        Grid.Column="1"
-                        Grid.Row="3"
-                        FontAttributes="Bold"
-                        Text="{Binding Alumno.perLocalidad}"
-                        TextColor="Black">
-                    </Label>
-                    <Label
-                        Grid.Column="0"
-                        Grid.Row="4"
-                        Text="Domicilio : "
-                        TextColor="Black">
-                    </Label>
-                    <Label
-                        Grid.Column="1"
-                        Grid.Row="4"
-                        FontAttributes="Bold"
-                        Text="{Binding Alumno.perDomicilio}"
-                        TextColor="Black">
-                    </Label>
-                    <Label
-                        Grid.Column="0"
-                        Grid.Row="5"
-                        Text="Telefono : "
-                        TextColor="Black">
-                    </Label>
-                    <Label
-                        Grid.Column="1"
-                        Grid.Row="5"
-                        FontAttributes="Bold"
-                        Text="{Binding Alumno.perTelefono}"
-                        TextColor="Black">
-                    </Label>
-                    <Label
-                        Grid.Column="0"
-                        Grid.Row="6"
-                        Text="Mail : "
-                        TextColor="Black">
-                    </Label>
-                    <Label
-                        Grid.Column="1"
-                        Grid.Row="6"
-                        FontAttributes="Bold"
-                        Text="{Binding Alumno.perMail}"
-                        TextColor="Black">
-                    </Label>
-                    <Label
-                        Grid.Column="0"
-                        Grid.Row="7"
                         Text="Fecha de Inscripcion : "
                         TextColor="Black">
                     </Label>
                     <Label
                         Grid.Column="1"
-                        Grid.Row="7"
+                        Grid.Row="1"
                         FontAttributes="Bold"
-                        Text="{Binding Alumno.aluFchInscripcion}"
+                        Text="{Binding CursoInscripcion.cinFchInscripcion , StringFormat='{0:MM/dd/yyyy}'}"
                         TextColor="Black">
                     </Label>
                 </Grid>

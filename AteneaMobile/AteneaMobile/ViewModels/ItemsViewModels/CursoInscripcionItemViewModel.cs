@@ -1,11 +1,14 @@
-﻿using AteneaMobile.Models;
+﻿using System;
+using System.Collections.Generic;
+using System.Text;
+using System.Windows.Input;
+using AteneaMobile.Models;
 using AteneaMobile.Services;
 using GalaSoft.MvvmLight.Command;
-using System.Windows.Input;
 
 namespace AteneaMobile.ViewModels.ItemsViewModels
 {
-    public class AlumnoItemViewModel : Alumno
+    public class CursoInscripcionItemViewModel : CursoInscripcion
     {
         #region Services
 
@@ -21,7 +24,7 @@ namespace AteneaMobile.ViewModels.ItemsViewModels
         private async void SelectAlumno()
         {
             // si no instancio la ViewModel relacionada a la Page, sino se instancia la Page no funciona.
-            MainViewModel.GetInstance().Alumno = new AlumnoViewModel(this);
+            MainViewModel.GetInstance().Alumno = new CursoInscripcionViewModel(this);
             await _navigationService.NavigateOnMaster("AlumnoPage");
         }
         #endregion

@@ -42,7 +42,7 @@
                         Grid.Column="1"
                         Grid.Row="0"
                         FontAttributes="Bold"
-                        Text="{Binding Curso.curCosto , StringFormat='{0:C }'}"
+                        Text="{Binding Curso.curCosto , StringFormat='{0:C}'}"
                         TextColor="Black">
                     </Label>
                     <Label

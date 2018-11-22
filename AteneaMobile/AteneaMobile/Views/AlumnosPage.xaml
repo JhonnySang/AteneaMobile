@@ -14,7 +14,7 @@
             <ListView 
                 HasUnevenRows="true" IsPullToRefreshEnabled="true"
                 IsRefreshing="{Binding IsRefreshing, Mode=TwoWay}"
-                ItemsSource="{Binding Alumnos}"
+                ItemsSource="{Binding CursoInscripcions}"
                 SeparatorVisibility="None"
                 RefreshCommand="{Binding RefreshCommand}">
                 <ListView.ItemTemplate>
@@ -38,13 +38,25 @@
                                         <Label 
                                             FontAttributes="Bold"
                                             FontSize="Medium" 
-                                            Text="{Binding apyNom}"
+                                            Text="{Binding alumnoApyNom}"
                                             TextColor="Black">
                                         </Label>
-                                        <Label 
-                                            Text="{Binding aluFchInscripcion}"
+                                        <Grid>
+                                            <Grid.ColumnDefinitions>
+                                                <ColumnDefinition Width="*"/>
+                                                <ColumnDefinition Width="*"/>
+                                            </Grid.ColumnDefinitions>
+                                            <Label
+                                                Grid.Column="0"
+                                                Text="Fecha Inscripcion :"
+                                                TextColor="Black">
+                                            </Label>
+                                            <Label
+                                                Grid.Column="1"
+                                            Text="{Binding cinFchInscripcion , StringFormat='{0:MM/dd/yyyy}'}"
                                             TextColor="Black">
-                                        </Label>
+                                            </Label>
+                                        </Grid>
                                     </StackLayout>
                                     <Image 
                                         Grid.Column="1"

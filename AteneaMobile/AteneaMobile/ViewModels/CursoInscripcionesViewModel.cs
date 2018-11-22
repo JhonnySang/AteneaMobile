@@ -12,7 +12,7 @@ using Xamarin.Forms;
 
 namespace AteneaMobile.ViewModels
 {
-    public class AlumnosViewModel : BaseViewModel
+    public class CursoInscripcionsViewModel : BaseViewModel
     {
         #region Services
 
@@ -22,15 +22,17 @@ namespace AteneaMobile.ViewModels
 
         #region Attributes
 
-        private List<Alumno> AlumnoList;
-        private List<AlumnoItemViewModel> AlumnoVMList;
-        private ObservableCollection<AlumnoItemViewModel> alumnos;
+        private List<CursoInscripcion> CursoInscripcionList;
+        private List<CursoInscripcionItemViewModel> CursoInscripcionVMList;
+        private ObservableCollection<CursoInscripcionItemViewModel> cursoInscripcions;
         private bool isRefreshing;
         private string filter;
 
         #endregion
 
         #region Properties
+
+        public int CursoSelect { get; set; }
 
         public string Filter
         {
@@ -48,27 +50,28 @@ namespace AteneaMobile.ViewModels
             set => SetProperty(ref isRefreshing, value);
         }
 
-        public ObservableCollection<AlumnoItemViewModel> Alumnos
+        public ObservableCollection<CursoInscripcionItemViewModel> CursoInscripcions
         {
-            get => this.alumnos;
-            set => SetProperty(ref this.alumnos, value);
+            get => this.cursoInscripcions;
+            set => SetProperty(ref this.cursoInscripcions, value);
         }
 
         #endregion
 
         #region Constructors
 
-        public AlumnosViewModel()
+        public CursoInscripcionsViewModel(int curCod)
         {
+            this.CursoSelect = curCod;
             this._apiService = new ApiService();
-            this.LoadAlumnos();
+            this.LoadCursoInscripcions();
         }
 
         #endregion
 
         #region Methods
 
-        private async void LoadAlumnos()
+        private async void LoadCursoInscripcions()
         {
             this.IsRefreshing = true;
             var connection = await this._apiService.CheckConnection();
@@ -84,10 +87,10 @@ namespace AteneaMobile.ViewModels
                 return;
             }
 
-            var response = await this._apiService.GetList<Alumno>(
+            var response = await this._apiService.GetList<CursoInscripcion>(
                 $"{App.UrlServer}",
                 "/api",
-                "/AlumnosMobile");
+                $"/CursosMobile/{CursoSelect}");
 
             if (!response.IsSuccess)
             {
@@ -100,23 +103,23 @@ namespace AteneaMobile.ViewModels
                 return;
             }
 
-            this.AlumnoList = (List<Alumno>)response.Result;
-            ToAlumnoItemViewModel();
-            this.Alumnos = new ObservableCollection<AlumnoItemViewModel>(
-                AlumnoVMList);
+            this.CursoInscripcionList = (List<CursoInscripcion>)response.Result;
+            ToCursoInscripcionItemViewModel();
+            this.CursoInscripcions = new ObservableCollection<CursoInscripcionItemViewModel>(
+                CursoInscripcionVMList);
             this.IsRefreshing = false;
         }
 
-        private void ToAlumnoItemViewModel()
+        private void ToCursoInscripcionItemViewModel()
         {
-            AlumnoVMList = AutoMapper.Mapper.Map<List<AlumnoItemViewModel>>(AlumnoList);
+            CursoInscripcionVMList = AutoMapper.Mapper.Map<List<CursoInscripcionItemViewModel>>(CursoInscripcionList);
         }
 
         #endregion
 
         #region Commands
 
-        public ICommand RefreshCommand => new RelayCommand(LoadAlumnos);
+        public ICommand RefreshCommand => new RelayCommand(LoadCursoInscripcions);
 
         public ICommand SearchCommand => new RelayCommand(Search);
 
@@ -124,7 +127,7 @@ namespace AteneaMobile.ViewModels
         {
             if (string.IsNullOrEmpty(this.Filter))
             {
-                this.Alumnos = new ObservableCollection<AlumnoItemViewModel>(AlumnoVMList);
+                this.CursoInscripcions = new ObservableCollection<CursoInscripcionItemViewModel>(CursoInscripcionVMList);
             }
             else
             {
@@ -137,10 +140,8 @@ namespace AteneaMobile.ViewModels
                         int.TryParse(Filter, out dni);
                     }
 
-                    this.Alumnos = new ObservableCollection<AlumnoItemViewModel>(
-                        AlumnoVMList.Where(l => l.perNombre.ToLower().Contains(this.Filter.ToLower()) ||
-                                                  l.perApellido.ToLower().Contains(this.Filter.ToLower())
-                                                  || l.perDni == dni));
+                    this.CursoInscripcions = new ObservableCollection<CursoInscripcionItemViewModel>(
+                        CursoInscripcionVMList.Where(l => l.alumnoApyNom.ToLower().Contains(this.Filter.ToLower())));
                 }
                 catch
                 {

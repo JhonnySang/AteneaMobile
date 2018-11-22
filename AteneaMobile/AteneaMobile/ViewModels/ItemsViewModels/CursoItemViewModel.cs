@@ -25,7 +25,7 @@ namespace AteneaMobile.ViewModels.ItemsViewModels
         {
             // si no instancio la ViewModel relacionada a la Page, sino se instancia la Page no funciona.
             MainViewModel.GetInstance().Curso = new CursoViewModel(this);
-            MainViewModel.GetInstance().Alumnos = new AlumnosViewModel();
+            MainViewModel.GetInstance().Alumnos = new CursoInscripcionsViewModel(this.curCod);
             await _navigationService.NavigateOnMaster("CursoTabbedPage");
         }
         #endregion
