@@ -6,10 +6,11 @@
              Title="Principal">
     <ContentPage.Content>
         <StackLayout>
-            <!--Aqui hace lo que quieras Ivancito, esta sera la página principal-->
-            <Label Text="Mi Pagina Principal!"
-                VerticalOptions="CenterAndExpand" 
-                HorizontalOptions="CenterAndExpand" />
+            <Image 
+                Source="atenea"
+                HorizontalOptions="CenterAndExpand"
+                VerticalOptions="CenterAndExpand">
+            </Image>
         </StackLayout>
     </ContentPage.Content>
 </ContentPage>
